@@ -22,6 +22,12 @@ class GreetingsController extends AppController {
  */
 	public function index() {
 		$this->Greeting->recursive = 0;
+		$this->Paginator->settings = array(
+			'limit' => 5,
+			'order' => array(
+				'Greeting.created' => 'desc'
+			)
+		);
 		$this->set('greetings', $this->Paginator->paginate());
 
 		// create new greeting
