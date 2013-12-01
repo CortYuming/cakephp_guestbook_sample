@@ -41,7 +41,7 @@ a:hover {
 a img {
 	border:none;
 }
-h1, h2, h3, h4 {
+h2, h3, h4 {
 	font-weight: normal;
 	margin-bottom:0.5em;
 }
@@ -49,6 +49,12 @@ h1 {
 	background:#fff;
 	color: #003d4c;
 	font-size: 100%;
+}
+div.title h1 {
+	background:#fff;
+	color: #333333;
+	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
+	font-size: 260%;
 }
 h2 {
 	background:#fff;
@@ -114,13 +120,12 @@ p {
 }
 
 /** containers **/
+div.title,
 div.form,
 div.index,
 div.view {
-	float:right;
 	width:76%;
-	border-left:1px solid #666;
-	padding:10px 2%;
+    margin: 0 auto;
 }
 div.actions {
 	float:left;
@@ -161,7 +166,7 @@ th a.desc:after {
 table tr td {
 	padding: 6px;
 	text-align: left;
-	vertical-align: top;
+	vertical-align: middle;
 	border-bottom:1px solid #ddd;
 }
 table tr:nth-child(even) {
@@ -259,14 +264,12 @@ dd {
 /** Forms **/
 form {
 	clear: both;
-	margin-right: 20px;
-	padding: 0;
-	width: 95%;
+mc	padding: 0;
+	width: 100%;
 }
 fieldset {
 	border: none;
 	margin-bottom: 1em;
-	padding: 16px 10px;
 }
 fieldset legend {
 	color: #e32;
