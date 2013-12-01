@@ -1,0 +1,24 @@
+{
+    "name": "example-app",
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.cakephp.org"
+        }
+    ],
+    "require": {
+        "pear-cakephp/cakephp": ">=2.4.3"
+    },
+    "require-dev": {
+        "cakephp/debug_kit": "2.2.*",
+        "phpunit/phpunit": "3.7.*"     },
+    "extra": {
+        "installer-paths":
+        {
+            "app/Plugin/DebugKit": ["cakephp/debug_kit"]
+        }
+    },
+    "config": {
+        "vendor-dir": "Vendor/"
+    }
+}
