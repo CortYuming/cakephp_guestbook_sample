@@ -12,15 +12,18 @@ class AppSchema extends CakeSchema {
 				case 'greetings':
 					App::uses('ClassRegistry', 'Utility');
 					$greeting = ClassRegistry::init('Greeting');
-					$greeting->create();
-					$greeting->save(
-						array('Greeting' =>
-							array(
-								'name' => 'John',
-								'comment' => 'Happy Xmas and Year.',
+
+					foreach (range(1, 50) as $num) {
+						$greeting->create();
+						$greeting->save(
+							array('Greeting' =>
+								array(
+									'name' => 'NAME' . (int)$num,
+									'comment' => 'COMMENT'. (int)$num,
+								)
 							)
-						)
-					);
+						);
+					}
 					break;
 			}
 		}
