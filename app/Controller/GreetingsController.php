@@ -53,23 +53,6 @@ class GreetingsController extends AppController {
 	}
 
 /**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Greeting->create();
-			if ($this->Greeting->save($this->request->data)) {
-				$this->Session->setFlash(__('The greeting has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The greeting could not be saved. Please, try again.'));
-			}
-		}
-	}
-
-/**
  * edit method
  *
  * @throws NotFoundException
