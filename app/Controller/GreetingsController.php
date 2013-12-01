@@ -23,6 +23,18 @@ class GreetingsController extends AppController {
 	public function index() {
 		$this->Greeting->recursive = 0;
 		$this->set('greetings', $this->Paginator->paginate());
+
+		// create new greeting
+		if ($this->request->is('post')) {
+			$this->Greeting->create();
+			if ($this->Greeting->save($this->request->data)) {
+				$this->Session->setFlash(__('The greeting has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The greeting could not be saved. Please, try again.'));
+			}
+		}
+
 	}
 
 /**

@@ -1,5 +1,18 @@
+<div class="greetings form">
+	<?php echo $this->Form->create('Greeting'); ?>
+	<fieldset>
+		<legend><?php echo __('Add Greeting'); ?></legend>
+		<?php
+			 echo $this->Form->input('name');
+		echo $this->Form->input('comment');
+		?>
+	</fieldset>
+	<?php echo $this->Form->end(__('Submit')); ?>
+</div>
+
 <div class="greetings index">
 	<h2><?php echo __('Greetings'); ?></h2>
+
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -35,10 +48,4 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Greeting'), array('action' => 'add')); ?></li>
-	</ul>
 </div>
