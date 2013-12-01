@@ -1,4 +1,5 @@
 <?php 
+
 class AppSchema extends CakeSchema {
 
 	public function before($event = array()) {
@@ -6,6 +7,23 @@ class AppSchema extends CakeSchema {
 	}
 
 	public function after($event = array()) {
+		if (isset($event['create'])) {
+			switch ($event['create']) {
+				case 'greetings':
+					App::uses('ClassRegistry', 'Utility');
+					$greeting = ClassRegistry::init('Greeting');
+					$greeting->create();
+					$greeting->save(
+						array('Greeting' =>
+							array(
+								'name' => 'John',
+								'comment' => 'Happy Xmas and Year.',
+							)
+						)
+					);
+					break;
+			}
+		}
 	}
 
 	public $greetings = array(
