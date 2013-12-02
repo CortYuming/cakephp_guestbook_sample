@@ -41,6 +41,18 @@ class GreetingsController extends AppController {
 			}
 		}
 
+		// will not exceed the total amount.
+		$max_num = 50;
+		$totalNum = $this->Greeting->find('count');
+		if ($totalNum > $max_num) {
+			$lastGreeting = $this->Greeting->find('first', array(
+					'order' => array(
+						'Greeting.created' => 'asc'
+					)
+				));
+			$id = $lastGreeting['Greeting']['id'];
+			$this->delete($id);
+		}
 	}
 
 /**
@@ -91,14 +103,6 @@ class GreetingsController extends AppController {
  */
 	public function delete($id = null) {
 		$this->Greeting->id = $id;
-		if (!$this->Greeting->exists()) {
-			throw new NotFoundException(__('Invalid greeting'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Greeting->delete()) {
-			$this->Session->setFlash(__('The greeting has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The greeting could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}}
+		$this->Greeting->delete();
+	}
+}
