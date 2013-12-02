@@ -71,30 +71,6 @@ class GreetingsController extends AppController {
 	}
 
 /**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Greeting->exists($id)) {
-			throw new NotFoundException(__('Invalid greeting'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Greeting->save($this->request->data)) {
-				$this->Session->setFlash(__('The greeting has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The greeting could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Greeting.' . $this->Greeting->primaryKey => $id));
-			$this->request->data = $this->Greeting->find('first', $options);
-		}
-	}
-
-/**
  * delete method
  *
  * @throws NotFoundException
